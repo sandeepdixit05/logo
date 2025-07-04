@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axivio Logo - AV Lettermark</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .logo-showcase {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-symbol {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .av-lettermark {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .letter-a {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 70px;
+            height: 100px;
+            background: linear-gradient(135deg, #2979FF 0%, #1E88E5 50%, #43A047 100%);
+            clip-path: polygon(50% 0%, 0% 100%, 20% 100%, 35% 65%, 65% 65%, 80% 100%, 100% 100%);
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .letter-v {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 70px;
+            height: 100px;
+            background: linear-gradient(135deg, #43A047 0%, #66BB6A 50%, #A6FF00 100%);
+            clip-path: polygon(0% 0%, 20% 0%, 50% 70%, 80% 0%, 100% 0%, 50% 100%);
+            animation: slideInRight 1s ease-out 0.2s both;
+        }
+
+        .arrow-element {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(45deg, #2979FF, #A6FF00);
+            clip-path: polygon(50% 0%, 0% 50%, 40% 50%, 40% 100%, 60% 100%, 60% 50%, 100% 50%);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .glow-effect {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(135deg, rgba(41, 121, 255, 0.3), rgba(166, 255, 0, 0.3));
+            border-radius: 15px;
+            filter: blur(20px);
+            opacity: 0;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .logo-text {
+            font-size: 56px;
+            font-weight: 800;
+            color: #2E2E3A;
+            letter-spacing: -2px;
+            position: relative;
+            background: linear-gradient(135deg, #2E2E3A 0%, #2979FF 50%, #A6FF00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlow 3s ease-in-out infinite;
+        }
+
+        .logo-text::before {
+            content: 'AXIVIO';
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, #2979FF 0%, #A6FF00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            animation: colorShift 4s ease-in-out infinite;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s both;
+        }
+
+        .variations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .variation {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .variation:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .variation h3 {
+            color: #2E2E3A;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .logo-dark {
+            background: #2E2E3A;
+        }
+
+        .logo-dark .logo-text {
+            background: linear-gradient(135deg, #ffffff 0%, #2979FF 50%, #A6FF00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-dark .tagline {
+            color: #ccc;
+        }
+
+        .logo-horizontal {
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-horizontal .logo-symbol {
+            width: 60px;
+            height: 60px;
+        }
+
+        .logo-horizontal .logo-text {
+            font-size: 36px;
+        }
+
+        .logo-minimal .letter-a,
+        .logo-minimal .letter-v {
+            background: #2E2E3A;
+        }
+
+        .logo-minimal .arrow-element {
+            background: #2979FF;
+        }
+
+        .logo-minimal .logo-text {
+            background: #2E2E3A;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes slideInLeft {
+            0% { transform: translateX(-100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            0% { transform: translateX(100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        @keyframes glow {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes textGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        @keyframes colorShift {
+            0%, 100% { opacity: 0; }
+            25%, 75% { opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 42px;
+            }
+
+            .logo-symbol {
+                width: 100px;
+                height: 100px;
+            }
+
+            .variations {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-horizontal .logo-text {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-showcase">
+            <div class="logo">
+                <div class="logo-symbol">
+                    <div class="glow-effect"></div>
+                    <div class="av-lettermark">
+                        <div class="letter-a"></div>
+                        <div class="letter-v"></div>
+                        <div class="arrow-element"></div>
+                    </div>
+                </div>
+                <div class="logo-text">AXIVIO</div>
+                <div class="tagline">Digital Excellence</div>
+            </div>
+        </div>
+
+        <div class="variations">
+            <div class="variation logo-dark">
+                <h3>Dark Theme</h3>
+                <div class="logo">
+                    <div class="logo-symbol">
+                        <div class="av-lettermark">
+                            <div class="letter-a"></div>
+                            <div class="letter-v"></div>
+                            <div class="arrow-element"></div>
+                        </div>
+                    </div>
+                    <div class="logo-text">AXIVIO</div>
+                    <div class="tagline">Digital Excellence</div>
+                </div>
+            </div>
+
+            <div class="variation">
+                <h3>Horizontal Layout</h3>
+                <div class="logo logo-horizontal">
+                    <div class="logo-symbol">
+                        <div class="av-lettermark">
+                            <div class="letter-a"></div>
+                            <div class="letter-v"></div>
+                            <div class="arrow-element"></div>
+                        </div>
+                    </div>
+                    <div class="logo-text">AXIVIO</div>
+                </div>
+            </div>
+
+            <div class="variation">
+                <h3>Minimal Version</h3>
+                <div class="logo logo-minimal">
+                    <div class="logo-symbol">
+                        <div class="av-lettermark">
+                            <div class="letter-a"></div>
+                            <div class="letter-v"></div>
+                            <div class="arrow-element"></div>
+                        </div>
+                    </div>
+                    <div class="logo-text">AXIVIO</div>
+                </div>
+            </div>
+
+            <div class="variation">
+                <h3>Symbol Only</h3>
+                <div class="logo-symbol" style="margin: 0 auto;">
+                    <div class="glow-effect"></div>
+                    <div class="av-lettermark">
+                        <div class="letter-a"></div>
+                        <div class="letter-v"></div>
+                        <div class="arrow-element"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
