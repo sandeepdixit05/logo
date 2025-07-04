@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axivio Logo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .logo-showcase {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-symbol {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .symbol-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .outer-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 3px solid #2979FF;
+            border-radius: 50%;
+            animation: rotate 8s linear infinite;
+        }
+
+        .inner-elements {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+        }
+
+        .growth-bars {
+            display: flex;
+            align-items: end;
+            justify-content: center;
+            gap: 4px;
+            height: 100%;
+        }
+
+        .bar {
+            width: 6px;
+            background: linear-gradient(to top, #2E2E3A, #2979FF);
+            border-radius: 3px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .bar:nth-child(1) { height: 20%; animation-delay: 0s; }
+        .bar:nth-child(2) { height: 40%; animation-delay: 0.2s; }
+        .bar:nth-child(3) { height: 80%; animation-delay: 0.4s; }
+        .bar:nth-child(4) { height: 60%; animation-delay: 0.6s; }
+        .bar:nth-child(5) { height: 100%; animation-delay: 0.8s; background: linear-gradient(to top, #2979FF, #A6FF00); }
+
+        .accent-dot {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 8px;
+            height: 8px;
+            background: #A6FF00;
+            border-radius: 50%;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .logo-text {
+            font-size: 48px;
+            font-weight: 700;
+            color: #2E2E3A;
+            letter-spacing: -1px;
+            position: relative;
+        }
+
+        .logo-text::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #2979FF, #A6FF00);
+            border-radius: 2px;
+            transform: scaleX(0);
+            animation: underline 3s ease-in-out infinite;
+        }
+
+        .variations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .variation {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .variation:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .variation h3 {
+            color: #2E2E3A;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .logo-dark {
+            background: #2E2E3A;
+            color: white;
+        }
+
+        .logo-dark .logo-text {
+            color: white;
+        }
+
+        .logo-monochrome .logo-text {
+            color: #2E2E3A;
+        }
+
+        .logo-monochrome .outer-ring {
+            border-color: #2E2E3A;
+        }
+
+        .logo-monochrome .bar {
+            background: #2E2E3A;
+        }
+
+        .logo-monochrome .accent-dot {
+            background: #2E2E3A;
+        }
+
+        .logo-compact {
+            transform: scale(0.7);
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scaleY(1); opacity: 0.8; }
+            50% { transform: scaleY(1.2); opacity: 1; }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px #A6FF00; }
+            100% { box-shadow: 0 0 20px #A6FF00, 0 0 30px rgba(166, 255, 0, 0.3); }
+        }
+
+        @keyframes underline {
+            0%, 70% { transform: scaleX(0); }
+            100% { transform: scaleX(1); }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .logo-text {
+                font-size: 36px;
+            }
+
+            .logo-symbol {
+                width: 60px;
+                height: 60px;
+            }
+
+            .variations {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-showcase">
+            <div class="logo">
+                <div class="logo-symbol">
+                    <div class="symbol-container">
+                        <div class="outer-ring"></div>
+                        <div class="inner-elements">
+                            <div class="growth-bars">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                        <div class="accent-dot"></div>
+                    </div>
+                </div>
+                <div class="logo-text">AXIVIO</div>
+            </div>
+        </div>
+
+        <div class="variations">
+            <div class="variation logo-dark">
+                <h3>Dark Version</h3>
+                <div class="logo">
+                    <div class="logo-symbol">
+                        <div class="symbol-container">
+                            <div class="outer-ring"></div>
+                            <div class="inner-elements">
+                                <div class="growth-bars">
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="accent-dot"></div>
+                        </div>
+                    </div>
+                    <div class="logo-text">AXIVIO</div>
+                </div>
+            </div>
+
+            <div class="variation">
+                <h3>Monochrome Version</h3>
+                <div class="logo logo-monochrome">
+                    <div class="logo-symbol">
+                        <div class="symbol-container">
+                            <div class="outer-ring"></div>
+                            <div class="inner-elements">
+                                <div class="growth-bars">
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="accent-dot"></div>
+                        </div>
+                    </div>
+                    <div class="logo-text">AXIVIO</div>
+                </div>
+            </div>
+
+            <div class="variation">
+                <h3>Compact Version</h3>
+                <div class="logo logo-compact">
+                    <div class="logo-symbol">
+                        <div class="symbol-container">
+                            <div class="outer-ring"></div>
+                            <div class="inner-elements">
+                                <div class="growth-bars">
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="accent-dot"></div>
+                        </div>
+                    </div>
+                    <div class="logo-text">AXIVIO</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
